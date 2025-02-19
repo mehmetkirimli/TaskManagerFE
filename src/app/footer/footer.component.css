@@ -1,54 +1,23 @@
-.footer .footer-text {
-  font-family: "Roboto", sans-serif;
-  font-size: 18px;
+/* Body'ye flexbox ekleyelim ve içerikleri dikey hizalayalım */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 50px;
+  font-family: Arial, sans-serif;
 }
 
-.footer .footer-text a {
-  color: #33ccff;
-  text-decoration: none;
-  transition: color 0.3s ease;
+/* Content bölümüne biraz boşluk ekleyelim */
+main {
+  flex-grow: 1; /* Sayfa uzunluğuna göre genişlemesini sağlar */
+  padding: 50px 0; /* Navbar ile araya boşluk */
 }
 
-.footer .footer-text a:hover {
-  color: #ff33cc; /* Neon mor etkisi */
-}
-
-.footer .social-icons {
-  margin-top: 10px;
-}
-
-.footer .social-icons i {
-  font-size: 24px;
-  color: #fff;
-  margin: 0 10px;
-  transition: color 0.3s ease;
-}
-
-.footer .social-icons i:hover {
-  color: #33ccff; /* Hoverda neon mavi */
-}
-
-/* Footer */
-.footer {
-  font-family: "Roboto", sans-serif;
+/* Footer'ı en altına sabitleyelim */
+footer {
+  background-color: #1f3c5d;
+  color: white;
   text-align: center;
-  padding: 20px;
-  background-color: #111;
-  color: #fff;
-  position: relative;
-  bottom: 0;
-  width: 100%;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-top: 50px; /* İçeriğin altına biraz boşluk ekledik */
-}
-
-/* Footer linkleri */
-.footer a {
-  text-decoration: none;
-  color: #33ccff;
-  transition: color 0.3s ease;
-}
-
-.footer a:hover {
-  color: #fff;
+  padding: 10px;
+  margin-top: 70px; /* Footer'ı en alta itecektir */
 }
