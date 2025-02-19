@@ -3,13 +3,9 @@
     <div class="left-side">
       <h2>Login Form</h2>
       <form [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()">
-        <label for="email">Email:</label>
-        <input id="email" formControlName="email" type="email" required />
-
-        <label for="password">Password:</label>
-        <input id="password" formControlName="password" type="password" required />
-
-        <button type="submit" [disabled]="loginForm.invalid">Login</button>
+        <input formControlName="email" type="email" placeholder="Email" />
+        <input formControlName="password" type="password" placeholder="Password" />
+        <button type="submit">Login</button>
       </form>
     </div>
 
@@ -18,16 +14,10 @@
     <div class="right-side">
       <h2>Register Form</h2>
       <form [formGroup]="registerForm" (ngSubmit)="onRegisterSubmit()">
-        <label for="username">Username:</label>
-        <input id="username" formControlName="username" type="text" required />
-
-        <label for="email">Email:</label>
-        <input id="email" formControlName="email" type="email" required />
-
-        <label for="password">Password:</label>
-        <input id="password" formControlName="password" type="password" required />
-
-        <button type="submit" [disabled]="registerForm.invalid">Register</button>
+        <input formControlName="username" type="text" placeholder="Username" />
+        <input formControlName="email" type="email" placeholder="Email" />
+        <input formControlName="password" type="password" placeholder="Password" />
+        <button type="submit">Register</button>
       </form>
     </div>
   </div>
