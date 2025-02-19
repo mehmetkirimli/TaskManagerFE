@@ -1,24 +1,5 @@
-<main class="main">
-  <div class="content">
-    <div class="left-side">
-      <h2>Login Form</h2>
-      <form [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()">
-        <input formControlName="email" type="email" placeholder="Email" />
-        <input formControlName="password" type="password" placeholder="Password" />
-        <button type="submit">Login</button>
-      </form>
-    </div>
+<app-navbar></app-navbar>
 
-    <div class="divider" role="separator" aria-label="Divider"></div>
+<app-log-register></app-log-register>
 
-    <div class="right-side">
-      <h2>Register Form</h2>
-      <form [formGroup]="registerForm" (ngSubmit)="onRegisterSubmit()">
-        <input formControlName="username" type="text" placeholder="Username" />
-        <input formControlName="email" type="email" placeholder="Email" />
-        <input formControlName="password" type="password" placeholder="Password" />
-        <button type="submit">Register</button>
-      </form>
-    </div>
-  </div>
-</main>
+<app-footer></app-footer>

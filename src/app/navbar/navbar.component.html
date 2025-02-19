@@ -1,0 +1,12 @@
+<nav class="navbar">
+    <div class="navbar-container">
+        <a routerLink="/" class="logo">TaskManager</a>
+        <ul class="nav-links">
+            <li><a routerLink="/">Ana Sayfa</a></li>
+            <li><a routerLink="/profile">Profil</a></li>
+            <li *ngIf="!isLoggedIn"><a routerLink="/logRegister">Giriş Yap</a></li>
+            <!-- <li *ngIf="!isLoggedIn"><a routerLink="/register">Kayıt Ol</a></li> -->
+            <li *ngIf="isLoggedIn"><a (click)="logout()">Çıkış Yap</a></li>
+        </ul>
+    </div>
+</nav>

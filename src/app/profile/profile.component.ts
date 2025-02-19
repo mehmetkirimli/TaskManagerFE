@@ -1,0 +1,20 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-profile',
+  standalone: true,
+  imports: [],
+  templateUrl: './profile.component.html',
+  styleUrl: './profile.component.css',
+})
+export class ProfileComponent {
+  user = {
+    username: 'Mehmet KIRIMLI',
+    email: 'mehmet@example.com',
+  };
+
+  editProfile() {
+    // Profil düzenleme işlemi burada yapılabilir
+    console.log('Profili Düzenle butonuna tıklanıyor');
+  }
+}
