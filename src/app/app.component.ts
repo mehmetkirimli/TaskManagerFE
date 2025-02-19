@@ -1,13 +1,41 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'TaskManagerFE';
+  loginForm: FormGroup;
+  registerForm: FormGroup;
+
+  constructor(private fb: FormBuilder) {
+    // Login Formu
+    this.loginForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required],
+    });
+
+    // Register Formu
+    this.registerForm = this.fb.group({
+      username: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required],
+    });
+  }
+
+  // Formları gönderme işlemi
+  onLoginSubmit() {
+    if (this.loginForm.valid) {
+      console.log('Login Form Submitted', this.loginForm.value);
+    }
+  }
+
+  onRegisterSubmit() {
+    if (this.registerForm.valid) {
+      console.log('Register Form Submitted', this.registerForm.value);
+    }
+  }
 }
