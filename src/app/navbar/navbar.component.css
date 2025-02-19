@@ -1,22 +1,83 @@
-/* Navbar Stili */
+/* Navbar Styling */
 .navbar {
-  background-color: #333;
-  padding: 10px;
-}
-
-.navbar-container {
+  background: linear-gradient(
+    45deg,
+    #1f3c5d,
+    #a3c8f2
+  ); /* Uzay temalı mavi gradient */
+  color: #fff;
+  padding: 10px 30px; /* Daha küçük padding */
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  border-bottom: 2px solid #33ccff; /* Neon etkisi */
 }
 
-.nav-links {
-  list-style: none;
+/* Logo kısmı */
+.navbar .brand {
+  font-size: 26px;
+  font-family: "Orbitron", sans-serif; /* Futuristik bir font */
+  letter-spacing: 3px;
+  color: #33ccff;
+  flex: 1; /* Sol tarafa sabitleme */
+  text-align: center; /* Ortalamak */
+}
+
+/* Menü için stil */
+.navbar ul {
+  list-style-type: none;
   display: flex;
-  gap: 15px;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
 }
 
-.nav-links a {
-  color: white;
+.navbar ul li {
+  position: relative;
+}
+
+.navbar ul li a {
   text-decoration: none;
+  color: #fff;
+  font-size: 18px;
+  font-family: "Roboto", sans-serif;
+  padding: 10px;
+  transition: color 0.3s ease, transform 0.3s ease;
+  border-radius: 5px; /* Menü öğelerine yuvarlak köşe */
+}
+
+.navbar ul li a:hover {
+  color: #33ccff;
+  transform: scale(1.1); /* Hoverda büyüme efekti */
+  box-shadow: 0 0 10px #33ccff, 0 0 20px #33ccff; /* Neon glow efekti */
+}
+
+/* Menü öğelerine alt çizgi efekti */
+.navbar ul li a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0%;
+  height: 2px;
+  background-color: #33ccff;
+  transition: width 0.3s ease, left 0.3s ease;
+}
+
+.navbar ul li a:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+/* Logo ve menüyü hizalamak için */
+.navbar .brand,
+.navbar ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

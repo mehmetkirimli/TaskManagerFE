@@ -1,12 +1,13 @@
 /* Temel stil ayarları */
 body {
-  font-family: Arial, sans-serif;
+  font-family: "Roboto", sans-serif;
   background-color: #f4f4f9;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   margin: 0;
+  color: #333;
 }
 
 .main {
@@ -20,24 +21,32 @@ body {
 .content {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   width: 80%;
-  max-width: 900px;
+  max-width: 1000px;
   gap: 40px;
+  transition: all 0.3s ease;
 }
 
 .left-side,
 .right-side {
-  background-color: #ffffff;
-  padding: 20px;
+  background-color: #fff;
+  padding: 30px;
   border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
   width: 45%;
+  transition: transform 0.3s ease;
+}
+
+.left-side:hover,
+.right-side:hover {
+  transform: scale(1.03); /* Hoverda büyüme efekti */
 }
 
 h2 {
-  font-size: 1.5rem;
-  color: #333;
+  font-size: 2rem;
+  color: #1f3c5d;
+  font-family: "Orbitron", sans-serif; /* Futuristik font */
   margin-bottom: 20px;
 }
 
@@ -47,32 +56,39 @@ form {
 }
 
 input {
-  padding: 10px;
-  margin: 10px 0;
-  border-radius: 5px;
+  padding: 12px;
+  margin: 12px 0;
+  border-radius: 6px;
   border: 1px solid #ccc;
   font-size: 1rem;
+  transition: border 0.3s;
+}
+
+input:focus {
+  border-color: #33ccff;
+  outline: none;
 }
 
 button {
-  padding: 10px;
-  background-color: #4caf50;
+  padding: 12px;
+  background-color: #33ccff;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 6px;
   cursor: pointer;
-  font-size: 1rem;
-  transition: background-color 0.3s;
+  font-size: 1.1rem;
+  transition: background-color 0.3s, transform 0.3s;
 }
 
 button:hover {
-  background-color: #45a049;
+  background-color: #29a6cc;
+  transform: translateY(-2px); /* Hoverda yükselme efekti */
 }
 
 .divider {
   width: 1px;
   background-color: #ccc;
-  height: 250px;
+  height: 300px;
   margin: 0 20px;
 }
 
@@ -86,5 +102,9 @@ button:hover {
   .left-side,
   .right-side {
     width: 100%;
+  }
+
+  .divider {
+    height: 150px;
   }
 }

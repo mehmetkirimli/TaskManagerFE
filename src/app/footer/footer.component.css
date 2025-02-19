@@ -1,7 +1,54 @@
-/* Footer Stili */
+.footer .footer-text {
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
+}
+
+.footer .footer-text a {
+  color: #33ccff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer .footer-text a:hover {
+  color: #ff33cc; /* Neon mor etkisi */
+}
+
+.footer .social-icons {
+  margin-top: 10px;
+}
+
+.footer .social-icons i {
+  font-size: 24px;
+  color: #fff;
+  margin: 0 10px;
+  transition: color 0.3s ease;
+}
+
+.footer .social-icons i:hover {
+  color: #33ccff; /* Hoverda neon mavi */
+}
+
+/* Footer */
 .footer {
-  background-color: #333;
-  color: white;
-  padding: 20px;
+  font-family: "Roboto", sans-serif;
   text-align: center;
+  padding: 20px;
+  background-color: #111;
+  color: #fff;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 50px; /* İçeriğin altına biraz boşluk ekledik */
+}
+
+/* Footer linkleri */
+.footer a {
+  text-decoration: none;
+  color: #33ccff;
+  transition: color 0.3s ease;
+}
+
+.footer a:hover {
+  color: #fff;
 }
