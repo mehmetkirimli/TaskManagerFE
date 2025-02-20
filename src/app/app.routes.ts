@@ -5,9 +5,10 @@ import { HomeComponent } from './home/home.component';
 import { LogRegisterComponent } from './log-register/log-register.component';
 import { ProfileComponent } from './profile/profile.component';
 export const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] }, // Profil sayfasına guard ekliyoruz
-  { path: 'logRegister', component: LogRegisterComponent },
+  { path: 'login', component: LogRegisterComponent },
+  { path: '**', redirectTo: 'login' },
 ];
 
 @NgModule({

@@ -1,1 +1,14 @@
+<nav>
+    <a routerLink="/home">Home</a>
+
+    <span *ngIf="isLoggedIn()">
+        <a routerLink="/profile">Profile</a>
+        <button (click)="logout()">Log Out</button>
+    </span>
+
+    <span *ngIf="!isLoggedIn()">
+        <a routerLink="/login">Login</a>
+    </span>
+</nav>
+
 <router-outlet></router-outlet>

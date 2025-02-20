@@ -42,7 +42,7 @@ export class LogRegisterComponent {
       this.authService.login(email, password).subscribe({
         next: (response) => {
           console.log('Login Successful:', response);
-          localStorage.setItem('token', response.token); // Token kaydetme
+          localStorage.setItem('token', response.token); // Token kaydetme // bu işlemi servis yapsın diye kaldırılmalı
         },
         error: (err) => {
           this.error = 'Login failed. Check your credentials.';

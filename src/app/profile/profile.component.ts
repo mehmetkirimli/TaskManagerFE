@@ -1,9 +1,10 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css',
 })
@@ -14,8 +15,18 @@ export class ProfileComponent {
   };
 
   tasks = [
-    { id: 1, name: 'Task 1', status: 'Complete' },
-    { id: 2, name: 'Task 2', status: 'IsProgress' },
+    {
+      id: 1,
+      name: 'Task 1',
+      status: 'Pending',
+      description: 'İlk görev açıklaması',
+    },
+    {
+      id: 2,
+      name: 'Task 2',
+      status: 'Completed',
+      description: 'İkinci görev açıklaması',
+    },
   ];
 
   constructor() {}
