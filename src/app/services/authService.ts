@@ -19,14 +19,14 @@ export class AuthService {
         tap((response) => {
           if (response.token) {
             localStorage.setItem(this.tokenKey, response.token); // Token'ı kaydet
-            this.router.navigate(['/home']); // Ana sayfaya yönlendir
+            this.router.navigate(['/profile']); // Ana sayfaya yönlendir
           }
         })
       );
   }
 
   register(email: string, password: string): Observable<any> {
-    return this.http.post(`${this.apiUrl}/register`, { email, password });
+    return this.http.post(`${this.apiUrl}/login`, { email, password });
   }
 
   logout(): void {

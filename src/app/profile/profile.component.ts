@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { TaskService } from '../services/taskService';
 
 @Component({
   selector: 'app-profile',
@@ -9,34 +10,52 @@ import { Component } from '@angular/core';
   styleUrl: './profile.component.css',
 })
 export class ProfileComponent {
-  user = {
-    username: 'Mehmet KIRIMLI',
-    email: 'mehmet@example.com',
-  };
+  tasks: any[] = []; //Tasklar İçin
+  user: any; // User Bilgisi için
 
-  tasks = [
-    {
-      id: 1,
-      name: 'Task 1',
-      status: 'Pending',
-      description: 'İlk görev açıklaması',
-    },
-    {
-      id: 2,
-      name: 'Task 2',
-      status: 'Completed',
-      description: 'İkinci görev açıklaması',
-    },
-  ];
-
-  constructor() {}
+  constructor(private taskService: TaskService) {}
 
   ngOnInit(): void {
-    // Kullanıcı verilerini bir API'den çekebilirsiniz (örneğin, JWT ile doğrulandıktan sonra)
+    this.loadTasks();
   }
 
   editProfile() {
     // Profil düzenleme işlemi burada yapılabilir
     console.log('Profili Düzenle butonuna tıklanıyor');
+  }
+
+  loadTasks() {
+    this.taskService.getTasks().subscribe(
+      (data) => {
+        this.tasks = data;
+      },
+      (error) => {
+        console.error('Görevler yüklenirken hata oluştu', error);
+      }
+    );
+  }
+
+  editTask(task: any) {
+    const updatedTask = { ...task, status: 'Tamamlandı' };
+    this.taskService.updateTask(updatedTask).subscribe(() => {
+      task.status = 'Tamamlandı';
+    });
+  }
+
+  deleteTask(taskId: number) {
+    this.taskService.deleteTask(taskId).subscribe(() => {
+      this.tasks = this.tasks.filter((task) => task.id !== taskId);
+    });
+  }
+
+  getUser() {
+    this.taskService.getUser().subscribe(
+      (data) => {
+        this.user = data;
+      },
+      (error) => {
+        console.error('User yüklenemedi !!', error);
+      }
+    );
   }
 }

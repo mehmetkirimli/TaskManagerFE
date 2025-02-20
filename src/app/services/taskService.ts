@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -6,19 +6,31 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class TaskService {
-  private API_URL = 'https://localhost:5001/api/tasks'; // Backend adresi
+  private apiUrl = 'https://localhost:7007/api/task'; // API adresini güncelle
 
   constructor(private http: HttpClient) {}
 
-  // Görevleri listeleme
-  getTasks(token: string): Observable<any> {
-    const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
-    return this.http.get(this.API_URL, { headers });
+  // Kullanıcının görevlerini getir
+  getTasks(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}`);
   }
 
   // Yeni görev ekleme
-  addTask(task: any, token: string): Observable<any> {
-    const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
-    return this.http.post(this.API_URL, task, { headers });
+  addTask(task: any): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}`, task);
+  }
+
+  // Görev güncelleme
+  updateTask(task: any): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/${task.id}`, task);
+  }
+
+  // Görev silme
+  deleteTask(taskId: number): Observable<any> {
+    return this.http.delete<any>(`${this.apiUrl}/${taskId}`);
+  }
+
+  getUser(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/user`);
   }
 }
