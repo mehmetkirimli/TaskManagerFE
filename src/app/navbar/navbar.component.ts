@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css'],
+  // styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent {
   isLoggedIn = false; // Kullanıcı giriş durumu, başlangıçta false

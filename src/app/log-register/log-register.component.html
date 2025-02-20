@@ -1,23 +1,32 @@
-<main class="main">
-    <div class="content">
-        <div class="left-side">
-            <h2>Login Form</h2>
+<main class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="row shadow-lg p-5 bg-white rounded w-75">
+        <div class="col-md-5 pe-md-5">
+            <h2 class="text-primary mb-4">Login</h2>
             <form [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()">
-                <input formControlName="email" type="email" placeholder="Email" />
-                <input formControlName="password" type="password" placeholder="Password" />
-                <button type="submit">Login</button>
+                <div class="mb-3">
+                    <input formControlName="email" type="email" class="form-control" placeholder="Email">
+                </div>
+                <div class="mb-3">
+                    <input formControlName="password" type="password" class="form-control" placeholder="Password">
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Login</button>
             </form>
         </div>
 
-        <div class="divider" role="separator" aria-label="Divider"></div>
+        <div class="col-md-2 d-flex align-items-center justify-content-center">
+            <div class="border-end d-none d-md-block" style="height: 80%; width: 2px; background-color: #ccc;"></div>
+        </div>
 
-        <div class="right-side">
-            <h2>Register Form</h2>
+        <div class="col-md-5 ps-md-5">
+            <h2 class="text-success mb-4">Register</h2>
             <form [formGroup]="registerForm" (ngSubmit)="onRegisterSubmit()">
-                <input formControlName="username" type="text" placeholder="Username" />
-                <input formControlName="email" type="email" placeholder="Email" />
-                <input formControlName="password" type="password" placeholder="Password" />
-                <button type="submit">Register</button>
+                <div class="mb-3">
+                    <input formControlName="email" type="email" class="form-control" placeholder="Email">
+                </div>
+                <div class="mb-3">
+                    <input formControlName="password" type="password" class="form-control" placeholder="Password">
+                </div>
+                <button type="submit" class="btn btn-success w-100">Register</button>
             </form>
         </div>
     </div>
