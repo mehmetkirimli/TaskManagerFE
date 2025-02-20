@@ -7,6 +7,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
+import { AuthService } from '../services/authService';
 
 @Component({
   selector: 'app-log-register',
@@ -16,11 +17,11 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './log-register.component.css',
 })
 export class LogRegisterComponent {
-  title = 'TaskManagerFE';
   loginForm: FormGroup;
   registerForm: FormGroup;
+  error = '';
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private authService: AuthService) {
     // Login Formu
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -34,16 +35,36 @@ export class LogRegisterComponent {
     });
   }
 
-  // Formları gönderme işlemi
+  // Login işlemi
   onLoginSubmit() {
     if (this.loginForm.valid) {
-      console.log('Login Form Submitted', this.loginForm.value);
+      const { email, password } = this.loginForm.value;
+      this.authService.login(email, password).subscribe({
+        next: (response) => {
+          console.log('Login Successful:', response);
+          localStorage.setItem('token', response.token); // Token kaydetme
+        },
+        error: (err) => {
+          this.error = 'Login failed. Check your credentials.';
+          console.error('Login Error:', err);
+        },
+      });
     }
   }
 
+  // Register işlemi
   onRegisterSubmit() {
     if (this.registerForm.valid) {
-      console.log('Register Form Submitted', this.registerForm.value);
+      const { email, password } = this.registerForm.value;
+      this.authService.register(email, password).subscribe({
+        next: (response) => {
+          console.log('Register Successful:', response);
+        },
+        error: (err) => {
+          this.error = 'Registration failed. Try again later.';
+          console.error('Register Error:', err);
+        },
+      });
     }
   }
 }
