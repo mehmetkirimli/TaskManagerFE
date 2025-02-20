@@ -33,4 +33,8 @@ export class TaskService {
   getUser(): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/user`);
   }
+
+  createTask(task: any): Observable<any> {
+    return this.http.post(this.apiUrl, task);
+  }
 }
