@@ -1,11 +1,22 @@
-/* Profil Page */
-.profile {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 80vh;
+.container {
+  margin-top: 50px;
+  padding: 20px;
 }
 
-.profile-container {
-  text-align: center;
+h1 {
+  font-size: 2.5rem;
+  color: #1f3c5d;
+}
+
+.user-info {
+  margin-bottom: 30px;
+}
+
+.table {
+  width: 100%;
+}
+
+table th,
+table td {
+  padding: 10px;
 }

@@ -1,20 +1,21 @@
-/* Home Page */
-.home {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 80vh;
+.container {
+  margin-top: 100px;
+  padding: 20px;
 }
 
-.home-container {
-  text-align: center;
+h1 {
+  font-size: 3rem;
+  color: #1f3c5d;
 }
 
-.home .btn {
-  margin: 5px;
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  cursor: pointer;
+ul {
+  list-style-type: none;
+}
+
+ul li {
+  font-size: 1.2rem;
+}
+
+.btn {
+  margin: 10px;
 }

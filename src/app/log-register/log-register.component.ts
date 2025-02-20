@@ -29,7 +29,6 @@ export class LogRegisterComponent {
 
     // Register Formu
     this.registerForm = this.fb.group({
-      username: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
     });

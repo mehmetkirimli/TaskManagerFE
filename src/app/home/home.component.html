@@ -1,8 +1,32 @@
-<main class="home">
-    <div class="home-container">
-        <h1>Hoşgeldiniz!</h1>
-        <p>Görevlerinizi yönetmeye başlamak için giriş yapın veya kayıt olun.</p>
-        <button routerLink="/login" class="btn">Giriş Yap</button>
-        <button routerLink="/register" class="btn">Kayıt Ol</button>
+<div class="container text-center">
+    <h1>Hoşgeldiniz!</h1>
+    <p>Bu proje, modern web teknolojilerini kullanarak geliştirilmiştir.</p>
+    <p>Projede kullanılan teknolojiler:</p>
+    <ul>
+        <li>Angular</li>
+        <li>Bootstrap</li>
+        <li>.Net9.0</li>
+        <li>Entity Framework</li>
+        <li>AutoMapper</li>
+        <li>JWT (Jwt Bearer)</li>
+        <li>Open Api</li>
+        <li>Entity Framework.Design</li>
+        <li>Entity Framework.sqlServer</li>
+        <li>Entity Framework.Tools</li>
+        <li>Serilog.AspNetCore</li>
+        <li>Serilog.Sink.Console</li>
+        <li>Serilog.Sink.File</li>
+        <li>Swagger</li>
+    </ul>
+
+    <!-- Eğer kullanıcı giriş yaptıysa Profil'e yönlendir -->
+    <div *ngIf="isLoggedIn; else loggedOut">
+        <a class="btn btn-primary" routerLink="/profile">Profile</a>
     </div>
-</main>
+
+    <!-- Eğer kullanıcı giriş yapmadıysa Login/Register'e yönlendir -->
+    <ng-template #loggedOut>
+        <a class="btn btn-primary" routerLink="/login">Login</a>
+        <a class="btn btn-secondary" routerLink="/register">Register</a>
+    </ng-template>
+</div>
