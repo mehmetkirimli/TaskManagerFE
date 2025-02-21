@@ -1,40 +1,43 @@
-<div class="container">
-    <h1>TASK MANAGER APP TABLE</h1>
+<div class="container mt-4">
+    <h1 class="text-center text-primary fw-bold">TASK MANAGER APP TABLE</h1>
 
-    <div class="user-info">
-        <h3>Personal Information</h3>
-        <p><strong>Username =></strong> {{ user.email }}</p>
-        <p><strong>E-mail =></strong> {{ user.email }}</p>
-        <p><strong>Id =></strong> {{ user.id }}</p>
+    <div class="user-info bg-light p-4 rounded shadow-sm mb-4">
+        <h3 class="text-secondary">Personal Information</h3>
+        <p><strong>Username:</strong> {{ user.email }}</p>
+        <p><strong>E-mail:</strong> {{ user.email }}</p>
+        <p><strong>Id:</strong> {{ user.id }}</p>
     </div>
 
     <!-- Yeni Task Ekleme Formu -->
-    <div class="task-form">
-        <h3>Add New Task</h3>
+    <div class="task-form bg-white p-4 rounded shadow-sm mb-4">
+        <h3 class="text-success">Add New Task</h3>
         <form (submit)="createTask()">
-            <label>Title:</label>
-            <input type="text" [(ngModel)]="newTask.title" name="title" required />
-
-            <label>Description:</label>
-            <input type="text" [(ngModel)]="newTask.description" name="description" required />
-
-            <label>Completed:</label>
-            <select [(ngModel)]="newTask.isCompleted" name="isCompleted">
-                <option [value]="true">Yes</option>
-                <option [value]="false">No</option>
-            </select>
-
-            <button type="submit">Create Task</button>
+            <div class="mb-3">
+                <label class="form-label">Title:</label>
+                <input type="text" [(ngModel)]="newTask.title" name="title" class="form-control" required />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Description:</label>
+                <input type="text" [(ngModel)]="newTask.description" name="description" class="form-control" required />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Completed:</label>
+                <select [(ngModel)]="newTask.isCompleted" name="isCompleted" class="form-select">
+                    <option [value]="true">Yes</option>
+                    <option [value]="false">No</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Create Task</button>
         </form>
     </div>
 
     <!-- Task Listesi -->
-    <div class="task-list">
-        <h3>Task List</h3>
-        <h2>MY TASK</h2>
+    <div class="task-list bg-white p-4 rounded shadow-sm">
+        <h3 class="text-info">Task List</h3>
+        <h2 class="text-dark">MY TASK</h2>
 
-        <table border="1">
-            <thead>
+        <table class="table table-striped table-hover">
+            <thead class="table-dark">
                 <tr>
                     <th>ID</th>
                     <th>TITLE</th>
@@ -47,11 +50,15 @@
                 <tr *ngFor="let task of tasks">
                     <td>{{ task.id }}</td>
                     <td>{{ task.title }}</td>
-                    <td>{{ task.isCompleted }}</td>
+                    <td>
+                        <span class="badge" [ngClass]="task.isCompleted ? 'bg-success' : 'bg-warning'">
+                            {{ task.isCompleted ? 'Completed' : 'Pending' }}
+                        </span>
+                    </td>
                     <td>{{ task.description }}</td>
                     <td>
-                        <button (click)="editTask(task)">Edit</button>
-                        <button (click)="deleteTask(task.id)">Delete</button>
+                        <button (click)="editTask(task)" class="btn btn-warning btn-sm">Edit</button>
+                        <button (click)="deleteTask(task.id)" class="btn btn-danger btn-sm">Delete</button>
                     </td>
                 </tr>
             </tbody>
