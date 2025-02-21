@@ -31,6 +31,27 @@
         </form>
     </div>
 
+    <!-- Filtreleme Formu -->
+    <div class="filter-form bg-white p-4 rounded shadow-sm mb-4">
+        <h3 class="text-secondary">Filter Tasks</h3>
+        <form (ngSubmit)="getFilterTasks()">
+            <div class="mb-3">
+                <label class="form-label">Title:</label>
+                <input type="text" [(ngModel)]="filter.title" name="title" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Completed:</label>
+                <select [(ngModel)]="filter.isCompleted" name="isCompleted" class="form-select">
+                    <option [ngValue]="undefined">Any</option>
+                    <option [ngValue]="true">Yes</option>
+                    <option [ngValue]="false">No</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Apply Filters</button>
+            <button type="button" class="btn btn-secondary" (click)="clearFilter()">Clear Filters</button>
+        </form>
+    </div>
+
     <!-- Task Listesi -->
     <div class="task-list bg-white p-4 rounded shadow-sm">
         <h3 class="text-info">Task List</h3>

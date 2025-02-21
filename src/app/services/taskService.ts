@@ -37,4 +37,10 @@ export class TaskService {
   createTask(task: any): Observable<any> {
     return this.http.post(this.apiUrl, task);
   }
+
+  // Task'ları filtreleyerek almak için method
+  getFilteredTasks(filter: any): Observable<any[]> {
+    console.log('Sending filter via POST', filter);
+    return this.http.post<any[]>(`${this.apiUrl}/filter`, filter);
+  }
 }

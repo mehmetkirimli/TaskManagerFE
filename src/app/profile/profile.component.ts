@@ -14,12 +14,34 @@ export class ProfileComponent {
   tasks: any[] = []; //Tasklar İçin
   user: any; // User Bilgisi için
   newTask = { title: '', description: '', isCompleted: false };
+  filter = {
+    title: '',
+    isCompleted: undefined as boolean | undefined,
+  };
 
   constructor(private taskService: TaskService) {}
 
   ngOnInit(): void {
     this.loadTasks();
     this.getUser();
+  }
+
+  // Filtreli task'ları çekme
+  getFilterTasks(): void {
+    this.taskService.getFilteredTasks(this.filter).subscribe({
+      next: (data) => {
+        this.tasks = data;
+      },
+      error: (err) => {
+        console.error('Error fetching tasks:', err);
+      },
+    });
+  }
+
+  // Filtreyi temizleme
+  clearFilter(): void {
+    this.filter = { title: '', isCompleted: undefined };
+    this.getFilterTasks();
   }
 
   createTask() {
