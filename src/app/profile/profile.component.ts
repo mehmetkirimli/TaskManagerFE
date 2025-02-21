@@ -28,7 +28,15 @@ export class ProfileComponent {
 
   // Filtreli task'ları çekme
   getFilterTasks(): void {
-    this.taskService.getFilteredTasks(this.filter).subscribe({
+    //userId'yi al yoksa tüm tasklar geliyor !!!!
+    const userId = this.user?.id;
+
+    if (!userId) {
+      console.error('Kullanıcı ID alınamadı');
+      return;
+    }
+
+    this.taskService.getFilteredTasks(this.filter, userId).subscribe({
       next: (data) => {
         this.tasks = data;
       },
