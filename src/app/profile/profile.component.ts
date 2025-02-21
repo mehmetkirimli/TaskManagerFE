@@ -23,15 +23,30 @@ export class ProfileComponent {
   }
 
   createTask() {
-    if (!this.newTask.title || !this.newTask.description) {
+    console.log('📌 Gönderilecek veri:', this.newTask); // DEBUG için kontrol et
+
+    if (!this.newTask.title?.trim() || !this.newTask.description?.trim()) {
       alert('Title and Description are required!');
       return;
     }
 
-    this.taskService.createTask(this.newTask).subscribe(() => {
-      this.loadTasks(); // Görevler listesini yenile
-      this.newTask = { title: '', description: '', isCompleted: false }; // Formu temizle
-    });
+    const taskPayload = {
+      title: this.newTask.title.trim(),
+      description: this.newTask.description.trim(),
+      isCompleted: !!this.newTask.isCompleted, // Boolean olarak netleştir
+    };
+
+    console.log("🚀 Backend'e gönderilen JSON:", taskPayload); // DEBUG için
+
+    this.taskService.createTask(taskPayload).subscribe(
+      () => {
+        this.loadTasks();
+        this.newTask = { title: '', description: '', isCompleted: false };
+      },
+      (error) => {
+        console.error('❌ API Hatası:', error);
+      }
+    );
   }
 
   editProfile() {
